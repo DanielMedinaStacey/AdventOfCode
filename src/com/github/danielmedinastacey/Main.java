@@ -2,6 +2,7 @@ package com.github.danielmedinastacey;
 
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 
 
@@ -17,7 +18,12 @@ public class Main {
         switch(selection) {
             case 1:
                 System.out.println("Filename? ");
-                DayOne dayone = new DayOne(new File(command.nextLine()));
+                DayOne dayone = null;
+                try {
+                    dayone = new DayOne(command.nextLine());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 System.out.println("Solution A: "+dayone.getSolution());
                 System.out.println("Solution B: "+dayone.getSolutionB());
                 break;

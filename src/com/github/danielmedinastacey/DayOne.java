@@ -1,31 +1,22 @@
 package com.github.danielmedinastacey;
 
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DayOne {
 
-    private BufferedInputStream bufferedInputStream;
-    private File file;
 
     private ArrayList<Integer> digits = new ArrayList<>();
 
-    private Scanner command = new Scanner(System.in);
-
-    public DayOne(File file) {
-        try (BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(file))) {
-            int preChar;
-            while (true) {
-                preChar = bufferedInputStream.read();
-                char truChar = (char) preChar;
-                int digit = Character.getNumericValue(truChar);
-                if(digit == -1) break;
+    public DayOne(String inputFile) throws IOException{
+        try (FileReader inputStream = new FileReader(inputFile)){
+            int digit;
+            while ((digit = Character.getNumericValue(inputStream.read())) != -1) {
                 digits.add(digit);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-
         }
 
     }
@@ -34,10 +25,7 @@ public class DayOne {
         int sum = 0;
         for(int i = 0, length = digits.size(); i < length; i++) {
             int j = i > 0 ? i-1 : length-1;
-
-
-
-            if(digits.get(i) == digits.get(j)){
+            if(digits.get(i).intValue() == digits.get(j).intValue()){
                 sum+=digits.get(i);
             }
         }
@@ -47,9 +35,10 @@ public class DayOne {
     public int getSolutionB(){
         int sum = 0;
         for(int i = 0, length = digits.size(); i < length; i++) {
+
             int j = getOpposite(i, length);
-            System.out.println(digits.get(i) + " "+ j);
-            if(digits.get(i) == digits.get(j)){
+
+            if(digits.get(i).intValue() == digits.get(j).intValue()){
                 sum+=digits.get(i);
             }
         }
