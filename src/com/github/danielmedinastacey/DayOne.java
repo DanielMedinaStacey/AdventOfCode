@@ -1,15 +1,15 @@
 package com.github.danielmedinastacey;
 
-import java.io.FileNotFoundException;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
-
-public class DayOne {
 
 
-    private ArrayList<Integer> digits = new ArrayList<>();
+class DayOne {
+
+
+    private final ArrayList<Integer> digits = new ArrayList<>();
 
     public DayOne(String inputFile) throws IOException{
         try (FileReader inputStream = new FileReader(inputFile)){
@@ -47,8 +47,7 @@ public class DayOne {
 
     private int getOpposite(int n, int length){
         int half = length/2;
-        int m = n < half ? n+half : n-half;
-        return m;
+        return n < half ? n+half : n-half;
 
     }
 

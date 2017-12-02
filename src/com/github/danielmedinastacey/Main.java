@@ -1,32 +1,48 @@
 package com.github.danielmedinastacey;
 
-
-import java.io.File;
+import java.io.Console;
 import java.io.IOException;
-import java.util.Scanner;
 
 
-public class Main {
+
+class Main {
 
     public static void main(String[] args){
 
-        Scanner command = new Scanner(System.in);
+        Console console = System.console();
+        if (console == null) {
+            System.err.println("No console.");
+            System.exit(1);
+        }
 
-        int selection;
-        System.out.println("Which puzzle? ");
-        selection = Integer.parseInt(command.nextLine());
+
+        int selection = Integer.parseInt(console.readLine("Which puzzle?: "));
         switch(selection) {
             case 1:
-                System.out.println("Filename? ");
                 DayOne dayone = null;
+
                 try {
-                    dayone = new DayOne(command.nextLine());
+                    dayone = new DayOne(console.readLine("Filename?: "));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                System.out.println("Solution A: "+dayone.getSolution());
-                System.out.println("Solution B: "+dayone.getSolutionB());
+                assert dayone != null;
+                console.printf("Solution A: %d %n",dayone.getSolution());
+                console.printf("Solution B: %d %n",dayone.getSolutionB());
                 break;
+
+            case 2:
+                DayTwo dayTwo = null;
+                try {
+                    dayTwo = new DayTwo(console.readLine("Filename?:"));
+                } catch (IOException e){
+                    e.printStackTrace();
+                }
+
+                assert dayTwo != null;
+                console.printf("Solution A: %d %n",dayTwo.solution());
+                console.printf("Solution B: %d %n",dayTwo.solutionB());
+
             default:
                 System.out.println("Goodbye");
                 break;

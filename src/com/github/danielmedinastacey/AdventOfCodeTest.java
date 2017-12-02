@@ -3,11 +3,11 @@ package com.github.danielmedinastacey;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-import java.io.File;
+
 import java.io.IOException;
 
 
-public class DayOneTest {
+public class AdventOfCodeTest {
 
     @Test
     public void oneTest() throws IOException {
@@ -61,6 +61,18 @@ public class DayOneTest {
     public void fiveTestB() throws IOException {
         DayOne dayone = new DayOne("/home/dms/GitHub/AdventOfCode/input/inputOneB_5");
         assertEquals(4, dayone.getSolutionB());
+    }
+
+    @Test
+    public void dayTwoTest() throws IOException {
+        DayTwo dayTwo = new DayTwo("/home/dms/GitHub/AdventOfCode/input/inputTwo_test");
+        assertEquals(18, dayTwo.solution());
+    }
+
+    @Test
+    public void dayTwoBTest() throws IOException {
+        DayTwo dayTwo = new DayTwo("/home/dms/GitHub/AdventOfCode/input/inputTwoB_test");
+        assertEquals(9, dayTwo.solutionB());
     }
 
 
