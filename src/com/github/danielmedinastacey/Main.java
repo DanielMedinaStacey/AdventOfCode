@@ -43,6 +43,18 @@ class Main {
                 console.printf("Solution A: %d %n",dayTwo.solution());
                 console.printf("Solution B: %d %n",dayTwo.solutionB());
 
+            case 4:
+                Day dayFour = null;
+                try {
+                    dayFour = new DayFour(console.readLine("Filename?:"));
+                } catch (IOException e){
+                    e.printStackTrace();
+                }
+
+                assert dayFour != null;
+                console.printf("Solution A: %d %n",dayFour.getSolution());
+                console.printf("Solution B: %d %n",dayFour.getSolutionB());
+
             default:
                 System.out.println("Goodbye");
                 break;
